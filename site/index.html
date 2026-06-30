@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CLIAMP — Terminal Music Player</title>
-<meta name="description" content="A retro terminal music player inspired by Winamp 2.x. Play local files, YouTube, Spotify, Plex, Jellyfin, Emby, Navidrome, SoundCloud, NetEase, and 30,000+ radio stations with a spectrum visualizer and 10-band EQ.">
+<meta name="description" content="A retro terminal music player inspired by Winamp 2.x. Play local files, YouTube, Spotify, Qobuz, Plex, Jellyfin, Emby, Navidrome, SoundCloud, NetEase, and 30,000+ radio stations with a spectrum visualizer and 10-band EQ.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="CLIAMP — Terminal Music Player">
-<meta property="og:description" content="A retro terminal music player inspired by Winamp 2.x. Play YouTube, Spotify, Plex, Jellyfin, Emby, SoundCloud, NetEase, and 30,000+ radio stations from your terminal with a spectrum visualizer and 10-band EQ.">
+<meta property="og:description" content="A retro terminal music player inspired by Winamp 2.x. Play YouTube, Spotify, Qobuz, Plex, Jellyfin, Emby, SoundCloud, NetEase, and 30,000+ radio stations from your terminal with a spectrum visualizer and 10-band EQ.">
 <meta property="og:image" content="https://cliamp.stream/og-image.png">
 <meta property="og:url" content="https://cliamp.stream">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CLIAMP — Terminal Music Player">
-<meta name="twitter:description" content="A retro terminal music player inspired by Winamp 2.x. Play YouTube, Spotify, Plex, Jellyfin, Emby, SoundCloud, NetEase, and 30,000+ radio stations from your terminal with a spectrum visualizer and 10-band EQ.">
+<meta name="twitter:description" content="A retro terminal music player inspired by Winamp 2.x. Play YouTube, Spotify, Qobuz, Plex, Jellyfin, Emby, SoundCloud, NetEase, and 30,000+ radio stations from your terminal with a spectrum visualizer and 10-band EQ.">
 <meta name="twitter:image" content="https://cliamp.stream/og-image.png">
 
 <style>
@@ -1262,7 +1262,7 @@
     <div class="hero-tagline">Terminal Music Player · <em>Winamp</em> for your shell</div>
     <p class="hero-desc">
       Playlists, EQ, visualizers, lyrics, remote control, and a Lua plugin system.
-      Streams from <em>Spotify</em>, YouTube Music, NetEase, Plex, Jellyfin, Emby, Navidrome, and 30,000+ radio stations.
+      Streams from <em>Spotify</em>, Qobuz, YouTube Music, NetEase, Plex, Jellyfin, Emby, Navidrome, and 30,000+ radio stations.
     </p>
 
     <!-- Terminal (cliamp TUI simulation) -->
@@ -1393,6 +1393,7 @@
     <span class="marquee-item"><strong>AAC</strong></span>
     <span class="marquee-item"><strong>ALAC</strong></span>
     <span class="marquee-item"><strong>Spotify</strong></span>
+    <span class="marquee-item"><strong>Qobuz</strong></span>
     <span class="marquee-item"><strong>YouTube</strong></span>
     <span class="marquee-item"><strong>Plex</strong></span>
     <span class="marquee-item"><strong>Jellyfin</strong></span>
@@ -1416,6 +1417,7 @@
     <span class="marquee-item"><strong>AAC</strong></span>
     <span class="marquee-item"><strong>ALAC</strong></span>
     <span class="marquee-item"><strong>Spotify</strong></span>
+    <span class="marquee-item"><strong>Qobuz</strong></span>
     <span class="marquee-item"><strong>YouTube</strong></span>
     <span class="marquee-item"><strong>Plex</strong></span>
     <span class="marquee-item"><strong>Jellyfin</strong></span>
@@ -1485,7 +1487,7 @@
     <div class="next-step">
       <div class="next-step-label">Next step · configure providers</div>
       <h3>Run the setup wizard</h3>
-      <p>An interactive TUI walks you through Navidrome, Plex, Jellyfin, Emby, Spotify, NetEase, and YouTube Music. It links to each provider's credential page, validates the connection, and writes the right block to your config file.</p>
+      <p>An interactive TUI walks you through Navidrome, Plex, Jellyfin, Emby, Spotify, Qobuz, NetEase, and YouTube Music. It links to each provider's credential page, validates the connection, and writes the right block to your config file.</p>
       <div class="install-box" onclick="copyCmd(this,'cliamp setup')">
         <div class="install-platform">Setup</div>
         <code><span class="prompt">$ </span>cliamp setup</code>
@@ -1504,13 +1506,18 @@
       <span class="sh-line"></span>
     </div>
     <p class="sources-intro">
-      Stream from everywhere. Every provider runs through the same <em>playlist, EQ, visualizer, and lyrics pipeline</em> — your config follows you across services. Run <code>cliamp setup</code> for an interactive wizard that walks you through Navidrome, Plex, Jellyfin, Emby, Spotify, NetEase, and YouTube Music.
+      Stream from everywhere. Every provider runs through the same <em>playlist, EQ, visualizer, and lyrics pipeline</em> — your config follows you across services. Run <code>cliamp setup</code> for an interactive wizard that walks you through Navidrome, Plex, Jellyfin, Emby, Spotify, Qobuz, NetEase, and YouTube Music.
     </p>
     <div class="sources-grid">
       <div class="source" style="--src-color:#1db954">
         <div class="source-badge">OAuth · cached</div>
         <div class="source-name">Spotify</div>
         <div class="source-desc">Stream your Premium library. Bring your own developer <code>client_id</code> for a private quota, or use the built-in shared one. Search &amp; add tracks with <kbd>F</kbd>. Currently unavailable on Windows builds.</div>
+      </div>
+      <div class="source" style="--src-color:#0a0a0a">
+        <div class="source-badge">OAuth · lossless</div>
+        <div class="source-name">Qobuz</div>
+        <div class="source-desc">Opt-in: set <code>[qobuz] enabled = true</code>. Stream lossless FLAC up to 24-bit/192kHz from your subscription. Browse favorites &amp; playlists, search with <kbd>Ctrl+F</kbd>. Sign in once via OAuth in your browser.</div>
       </div>
       <div class="source" style="--src-color:#ff0000">
         <div class="source-badge">yt-dlp</div>
@@ -1971,7 +1978,7 @@ user_id = "your-account-user-id"</code></pre>
         <div class="keys-group-title">Search &amp; Browse</div>
         <div class="keys-group-body">
           <div class="key-row"><kbd>/</kbd><span>Search playlist (fuzzy; ↑ / ↓ or Ctrl+N / Ctrl+P move results; Ctrl+U / Ctrl+D page results)</span></div>
-          <div class="key-row"><kbd>Ctrl+F</kbd><span>Search active provider (Spotify, Navidrome, Jellyfin, Emby, Plex, NetEase, Local) or YouTube fallback; Local search is fuzzy</span></div>
+          <div class="key-row"><kbd>Ctrl+F</kbd><span>Search active provider (Spotify, Qobuz, Navidrome, Jellyfin, Emby, Plex, NetEase, Local) or YouTube fallback; Local search is fuzzy</span></div>
           <div class="key-row"><kbd>f</kbd><span>Toggle bookmark &#9733; / radio favorite</span></div>
           <div class="key-row"><kbd>u</kbd><span>Load URL (stream / playlist)</span></div>
           <div class="key-row"><kbd>o</kbd><span>Open file browser</span></div>
@@ -2005,7 +2012,7 @@ user_id = "your-account-user-id"</code></pre>
           <div class="key-row"><kbd>/</kbd><span>Filter the visible playlists</span></div>
           <div class="key-row"><kbd>Ctrl+F</kbd><span>Online / server search via the provider's own search</span></div>
           <div class="key-row"><kbd>Ctrl+R</kbd><span>Refresh — re-pull playlists from the provider</span></div>
-          <div class="key-row"><kbd>S / N / P / J / E / Y / C / M / L / R</kbd><span>Switch to Spotify / Navidrome / Plex / Jellyfin / Emby / YouTube / SoundCloud / NetEase / Local / Radio</span></div>
+          <div class="key-row"><kbd>S / N / P / J / E / Y / C / M / Q / L / R</kbd><span>Switch to Spotify / Navidrome / Plex / Jellyfin / Emby / YouTube / SoundCloud / NetEase / Qobuz / Local / Radio</span></div>
           <div class="key-row"><kbd>▶</kbd><span>Marker on the row whose tracks are currently loaded</span></div>
         </div>
       </div>
@@ -2021,7 +2028,7 @@ user_id = "your-account-user-id"</code></pre>
           <div class="key-row"><kbd>q</kbd><span>Queue the highlighted track to play next</span></div>
           <div class="key-row"><kbd>s</kbd><span>Cycle album sort (album list only)</span></div>
           <div class="key-row"><kbd>/</kbd><span>Filter the visible list (search bar appears under the title)</span></div>
-          <div class="key-row"><kbd>S / N / P / J / E / Y / C / M / L / R</kbd><span>Quick-switch to another provider without going back to the main pane</span></div>
+          <div class="key-row"><kbd>S / N / P / J / E / Y / C / M / Q / L / R</kbd><span>Quick-switch to another provider without going back to the main pane</span></div>
           <div class="key-row"><kbd>Esc</kbd><span>Walk back one level / close the browser</span></div>
         </div>
       </div>
@@ -2048,6 +2055,7 @@ user_id = "your-account-user-id"</code></pre>
           <div class="key-row"><kbd>J</kbd><span>Jellyfin</span></div>
           <div class="key-row"><kbd>E</kbd><span>Emby</span></div>
           <div class="key-row"><kbd>Y</kbd><span>YouTube</span></div>
+          <div class="key-row"><kbd>Q</kbd><span>Qobuz</span></div>
           <div class="key-row"><kbd>R</kbd><span>Radio</span></div>
           <div class="key-row"><kbd>e / t / v</kbd><span>EQ preset / Theme / Visualizer</span></div>
           <div class="key-row"><kbd>Ctrl+V</kbd><span>Pick visualizer (live preview list)</span></div>
