@@ -822,10 +822,10 @@
   }
   .key-row span{color:var(--dim-bright);font-size:11px;line-height:1.5}
 
-  /* ═══════════ CLI + REMOTE (side-by-side) ═══════════ */
+  /* ═══════════ CLI + REMOTE ═══════════ */
   .cli-remote-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
   }
   .cli-remote-col{
@@ -1625,7 +1625,7 @@ user_id = "your-account-user-id"</code></pre>
       <div class="feature">
         <div class="feature-icon">☰</div>
         <div class="feature-name">Playlists</div>
-        <p>TOML playlists, M3U/M3U8/PLS support, playlist manager with album grouping.</p>
+        <p>TOML playlists, M3U/M3U8/PLS import/export, duplicate-safe writes, and TUI/CLI sort tools.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">⟲</div>
@@ -1989,6 +1989,7 @@ user_id = "your-account-user-id"</code></pre>
           <div class="key-row"><kbd>o</kbd><span>Open file browser</span></div>
           <div class="key-row"><kbd>a / A</kbd><span>Queue (play next) / Queue manager</span></div>
           <div class="key-row"><kbd>x</kbd><span>Remove highlighted track from current playlist</span></div>
+          <div class="key-row"><kbd>w</kbd><span>Write highlighted track to a local playlist</span></div>
           <div class="key-row"><kbd>p</kbd><span>Playlist manager</span></div>
           <div class="key-row"><kbd>L</kbd><span>Browse local playlists</span></div>
           <div class="key-row"><kbd>Ctrl+X</kbd><span>Expand playlist</span></div>
@@ -2000,11 +2001,31 @@ user_id = "your-account-user-id"</code></pre>
         <div class="keys-group-body">
           <div class="key-row"><kbd>/</kbd><span>Filter playlists or tracks (incremental)</span></div>
           <div class="key-row"><kbd>Enter</kbd><span>Open playlist · play <em>highlighted</em> track on the tracks screen</span></div>
-          <div class="key-row"><kbd>P</kbd><span>Play all tracks from the top</span></div>
-          <div class="key-row"><kbd>a</kbd><span>Add the now-playing track (footer shows which one)</span></div>
+          <div class="key-row"><kbd>p</kbd><span>Play all tracks from the top</span></div>
+          <div class="key-row"><kbd>a</kbd><span>List: add now-playing · Tracks: mark/unmark all visible</span></div>
+          <div class="key-row"><kbd>Space</kbd><span>Mark/unmark track and advance</span></div>
+          <div class="key-row"><kbd>[ / ]</kbd><span>Move track and save the playlist</span></div>
+          <div class="key-row"><kbd>s</kbd><span>Sort tracks by track/title/artist/album/path</span></div>
+          <div class="key-row"><kbd>o</kbd><span>Add files to the open playlist</span></div>
+          <div class="key-row"><kbd>w</kbd><span>Write marked/highlighted tracks to another playlist</span></div>
           <div class="key-row"><kbd>r</kbd><span>Rename the playlist</span></div>
-          <div class="key-row"><kbd>d</kbd><span>Delete playlist (confirms) / remove track</span></div>
-          <div class="key-row"><kbd>Esc / p</kbd><span>Close (or clear active filter)</span></div>
+          <div class="key-row"><kbd>d</kbd><span>Delete playlist (confirms) / remove marked tracks</span></div>
+          <div class="key-row"><kbd>u</kbd><span>Undo last manager edit</span></div>
+          <div class="key-row"><kbd>Esc</kbd><span>Close or go back</span></div>
+        </div>
+      </div>
+
+      <div class="keys-group">
+        <div class="keys-group-title">File Browser</div>
+        <div class="keys-group-body">
+          <div class="key-row"><kbd>↑ / ↓&nbsp;&nbsp;&nbsp;j / k</kbd><span>Move cursor</span></div>
+          <div class="key-row"><kbd>← / →&nbsp;&nbsp;&nbsp;h / l</kbd><span>Back / open directory or file</span></div>
+          <div class="key-row"><kbd>Space</kbd><span>Select file or directory</span></div>
+          <div class="key-row"><kbd>a</kbd><span>Select all visible audio files</span></div>
+          <div class="key-row"><kbd>R</kbd><span>Replace the current queue with selected files</span></div>
+          <div class="key-row"><kbd>w</kbd><span>Write selected files to a local playlist</span></div>
+          <div class="key-row"><kbd>/</kbd><span>Filter files</span></div>
+          <div class="key-row"><kbd>Esc / o</kbd><span>Close browser</span></div>
         </div>
       </div>
 
@@ -2139,6 +2160,24 @@ user_id = "your-account-user-id"</code></pre>
           <div class="key-row"><kbd>device &lt;name&gt;</kbd><span>Switch device</span></div>
           <div class="key-row"><kbd>theme &lt;name|list&gt;</kbd><span>Set or list themes</span></div>
           <div class="key-row"><kbd>vis &lt;name|next|list&gt;</kbd><span>Set or cycle visualizer</span></div>
+        </div>
+      </div>
+
+      <div class="cli-remote-col">
+        <div class="cli-remote-title">Playlist CLI</div>
+        <div class="keys-group-body">
+          <div class="key-row"><kbd>playlist list</kbd><span>List local playlists</span></div>
+          <div class="key-row"><kbd>playlist create "Name"</kbd><span>Create an empty playlist</span></div>
+          <div class="key-row"><kbd>playlist add "Name" file</kbd><span>Append tracks, skipping duplicates</span></div>
+          <div class="key-row"><kbd>playlist rename "Old" "New"</kbd><span>Rename a playlist</span></div>
+          <div class="key-row"><kbd>playlist dedupe "Name"</kbd><span>Remove duplicate paths</span></div>
+          <div class="key-row"><kbd>playlist sort "Name" --by album</kbd><span>Sort in place</span></div>
+          <div class="key-row"><kbd>playlist doctor [Name]</kbd><span>Report missing local files</span></div>
+          <div class="key-row"><kbd>playlist export "Name" -o mix.m3u</kbd><span>Export M3U or PLS</span></div>
+          <div class="key-row"><kbd>playlist import mix.pls</kbd><span>Import M3U/M3U8/PLS</span></div>
+          <div class="key-row"><kbd>playlist bookmark "Name" --index N</kbd><span>Toggle bookmark flag</span></div>
+          <div class="key-row"><kbd>playlist bookmarks</kbd><span>List bookmarked tracks</span></div>
+          <div class="key-row"><kbd>playlist enrich "Name"</kbd><span>Probe duration and album metadata</span></div>
         </div>
       </div>
 
