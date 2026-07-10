@@ -99,7 +99,7 @@ Item {
     BandStream {
         id: stream
         fps: 30
-        enabled: root.ready
+		enabled: root.visible && root.ready
     }
 
     Rectangle {
@@ -127,8 +127,8 @@ Item {
             height: 13
             verticalAlignment: Text.AlignVCenter
             elide: Text.ElideRight
-            text: root.ready ? (root.player.trackTitle || "Unknown title")
-                             : "cliamp: not running"
+			text: root.ready ? (root.player.trackTitle || qsTr("Unknown title"))
+			                 : qsTr("cliamp: not running")
             color: root.fg
             font.family: "monospace"
             font.pixelSize: 12
@@ -164,6 +164,7 @@ Item {
             TransportButton {
                 width: 16; height: 16
                 shape: "prev"
+				accessibleName: qsTr("Previous track")
                 iconSize: 10
                 enabled: root.ready && root.player.canGoPrevious
                 fgColor: root.dim
@@ -173,6 +174,7 @@ Item {
             TransportButton {
                 width: 20; height: 16
                 shape: root.playing ? "pause" : "play"
+				accessibleName: root.playing ? qsTr("Pause") : qsTr("Play")
                 iconSize: 12
                 enabled: root.ready && root.player.canTogglePlaying
                 fgColor: root.accent
@@ -182,6 +184,7 @@ Item {
             TransportButton {
                 width: 16; height: 16
                 shape: "next"
+				accessibleName: qsTr("Next track")
                 iconSize: 10
                 enabled: root.ready && root.player.canGoNext
                 fgColor: root.dim

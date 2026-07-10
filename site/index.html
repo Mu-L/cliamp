@@ -2196,7 +2196,7 @@ user_id = "your-account-user-id"</code></pre>
     <p class="plugins-intro">
       Lua 5.1 plugin system. Hook into playback events, add custom visualizers, or push data to external services.
       Each plugin runs in an isolated sandbox — a crash in one cannot affect others or the player.
-      Drop a <code>.lua</code> file in <span class="path">~/.config/cliamp/plugins/</span> and restart.
+      Install or copy a <code>.lua</code> file into <span class="path">~/.config/cliamp/plugins/</span>, then approve its exact SHA-256 with <code>cliamp plugins trust &lt;name&gt;</code>. Changed and untrusted plugins do not run.
     </p>
 
     <div class="plugin-examples">

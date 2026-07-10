@@ -10,12 +10,19 @@ Item {
     property color hoverColor: "#d8a657"
     property bool enabled: true
     property real iconSize: 14
+	property string accessibleName: shape
     signal activated()
 
     property bool hovered: false
 
     implicitWidth: iconSize + 12
     implicitHeight: iconSize + 8
+	activeFocusOnTab: enabled
+	Accessible.role: Accessible.Button
+	Accessible.name: accessibleName
+	Accessible.onPressAction: if (root.enabled) root.activated()
+	Keys.onSpacePressed: if (root.enabled) root.activated()
+	Keys.onReturnPressed: if (root.enabled) root.activated()
 
     MediaIcon {
         anchors.centerIn: parent
