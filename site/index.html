@@ -1333,6 +1333,8 @@
           <button class="rp-ch" data-station="ncs-dnb" onclick="switchChannel('ncs-dnb')">NCS DnB</button>
           <button class="rp-ch" data-station="ncs-trap" onclick="switchChannel('ncs-trap')">NCS Trap</button>
           <button class="rp-ch" data-station="ncs-phonk" onclick="switchChannel('ncs-phonk')">NCS Phonk</button>
+          <button class="rp-ch" data-station="ncs-pop" onclick="switchChannel('ncs-pop')">NCS Pop</button>
+          <button class="rp-ch" data-station="ncs-chill" onclick="switchChannel('ncs-chill')">NCS Chill</button>
           <span class="t-pill-static">[Local]</span>
           <span class="t-pill-static">[Navidrome]</span>
           <span class="t-pill-static">[Plex]</span>
@@ -1349,7 +1351,7 @@
           <span>▸─ Playlist ──</span>
           <span class="t-active">[Shuffle]</span>
           <span class="t-dim">[Repeat: Off]</span>
-          <span class="t-dim">[1/9]</span>
+          <span class="t-dim">[1/11]</span>
           <span>──</span>
         </div>
         <div class="t-pl-item t-pl-active">▶ 1. Lofi Hip Hop Radio</div>
@@ -1361,6 +1363,8 @@
         <div class="t-pl-item t-dim">&nbsp;&nbsp;7. NCS Drum &amp; Bass</div>
         <div class="t-pl-item t-dim">&nbsp;&nbsp;8. NCS Trap</div>
         <div class="t-pl-item t-dim">&nbsp;&nbsp;9. NCS Phonk</div>
+        <div class="t-pl-item t-dim">&nbsp;10. NCS Pop</div>
+        <div class="t-pl-item t-dim">&nbsp;11. NCS Chill</div>
 
         <div class="t-spacer"></div>
 
@@ -2407,6 +2411,8 @@ p:<span class="fn">on</span>(<span class="str">"track.change"</span>, <span clas
         <button class="radio-tab" data-station="ncs-dnb" onclick="switchStatTab('ncs-dnb')">NCS DnB</button>
         <button class="radio-tab" data-station="ncs-trap" onclick="switchStatTab('ncs-trap')">NCS Trap</button>
         <button class="radio-tab" data-station="ncs-phonk" onclick="switchStatTab('ncs-phonk')">NCS Phonk</button>
+        <button class="radio-tab" data-station="ncs-pop" onclick="switchStatTab('ncs-pop')">NCS Pop</button>
+        <button class="radio-tab" data-station="ncs-chill" onclick="switchStatTab('ncs-chill')">NCS Chill</button>
       </div>
       <div class="radio-live"><span class="radio-live-dot"></span> LIVE</div>
     </div>
@@ -2525,9 +2531,9 @@ function toggleSound(btn){
 
 /* ── Radio Player ── */
 var currentChannel='lofi';
-var radioStreams={edm:'https://radio.cliamp.stream/edm/stream',lofi:'https://radio.cliamp.stream/lofi/stream',synthwave:'https://radio.cliamp.stream/synthwave/stream','ncs':'https://radio.cliamp.stream/ncs/stream','ncs-house':'https://radio.cliamp.stream/ncs-house/stream','ncs-dubstep':'https://radio.cliamp.stream/ncs-dubstep/stream','ncs-dnb':'https://radio.cliamp.stream/ncs-dnb/stream','ncs-trap':'https://radio.cliamp.stream/ncs-trap/stream','ncs-phonk':'https://radio.cliamp.stream/ncs-phonk/stream'};
-var radioPls={edm:'https://radio.cliamp.stream/edm/stream.pls',lofi:'https://radio.cliamp.stream/lofi/stream.pls',synthwave:'https://radio.cliamp.stream/synthwave/stream.pls','ncs':'https://radio.cliamp.stream/ncs/stream.pls','ncs-house':'https://radio.cliamp.stream/ncs-house/stream.pls','ncs-dubstep':'https://radio.cliamp.stream/ncs-dubstep/stream.pls','ncs-dnb':'https://radio.cliamp.stream/ncs-dnb/stream.pls','ncs-trap':'https://radio.cliamp.stream/ncs-trap/stream.pls','ncs-phonk':'https://radio.cliamp.stream/ncs-phonk/stream.pls'};
-var radioNames={edm:'EDM Pulse',lofi:'Lofi Hip Hop Radio',synthwave:'Synthwave Nights','ncs':'NCS Radio','ncs-house':'NCS House','ncs-dubstep':'NCS Dubstep','ncs-dnb':'NCS Drum & Bass','ncs-trap':'NCS Trap','ncs-phonk':'NCS Phonk'};
+var radioStreams={edm:'https://radio.cliamp.stream/edm/stream',lofi:'https://radio.cliamp.stream/lofi/stream',synthwave:'https://radio.cliamp.stream/synthwave/stream','ncs':'https://radio.cliamp.stream/ncs/stream','ncs-house':'https://radio.cliamp.stream/ncs-house/stream','ncs-dubstep':'https://radio.cliamp.stream/ncs-dubstep/stream','ncs-dnb':'https://radio.cliamp.stream/ncs-dnb/stream','ncs-trap':'https://radio.cliamp.stream/ncs-trap/stream','ncs-phonk':'https://radio.cliamp.stream/ncs-phonk/stream','ncs-pop':'https://radio.cliamp.stream/ncs-pop/stream','ncs-chill':'https://radio.cliamp.stream/ncs-chill/stream'};
+var radioPls={edm:'https://radio.cliamp.stream/edm/stream.pls',lofi:'https://radio.cliamp.stream/lofi/stream.pls',synthwave:'https://radio.cliamp.stream/synthwave/stream.pls','ncs':'https://radio.cliamp.stream/ncs/stream.pls','ncs-house':'https://radio.cliamp.stream/ncs-house/stream.pls','ncs-dubstep':'https://radio.cliamp.stream/ncs-dubstep/stream.pls','ncs-dnb':'https://radio.cliamp.stream/ncs-dnb/stream.pls','ncs-trap':'https://radio.cliamp.stream/ncs-trap/stream.pls','ncs-phonk':'https://radio.cliamp.stream/ncs-phonk/stream.pls','ncs-pop':'https://radio.cliamp.stream/ncs-pop/stream.pls','ncs-chill':'https://radio.cliamp.stream/ncs-chill/stream.pls'};
+var radioNames={edm:'EDM Pulse',lofi:'Lofi Hip Hop Radio',synthwave:'Synthwave Nights','ncs':'NCS Radio','ncs-house':'NCS House','ncs-dubstep':'NCS Dubstep','ncs-dnb':'NCS Drum & Bass','ncs-trap':'NCS Trap','ncs-phonk':'NCS Phonk','ncs-pop':'NCS Pop','ncs-chill':'NCS Chill'};
 
 function switchChannel(ch){
   currentChannel=ch;
@@ -2656,7 +2662,7 @@ function renderStationStats(data,stationKey){
   chart.textContent="";
   labels.textContent="";
 
-  var barColors={total:"var(--fg)",edm:"var(--cyan)",lofi:"var(--amber)",synthwave:"#ff66cc","ncs":"#ff3355","ncs-house":"#00d1b2","ncs-dubstep":"#7b5cff","ncs-dnb":"#22c55e","ncs-trap":"#f59e0b","ncs-phonk":"#ec4899"};
+  var barColors={total:"var(--fg)",edm:"var(--cyan)",lofi:"var(--amber)",synthwave:"#ff66cc","ncs":"#ff3355","ncs-house":"#00d1b2","ncs-dubstep":"#7b5cff","ncs-dnb":"#22c55e","ncs-trap":"#f59e0b","ncs-phonk":"#ec4899","ncs-pop":"#38bdf8","ncs-chill":"#a3e635"};
 
   if(daily.length>0){
     var maxHours=Math.max.apply(null,daily.map(function(d){return d.listen_hours}))||1;
