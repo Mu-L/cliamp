@@ -290,18 +290,18 @@ kbd{color:var(--ink);background:var(--fg-hi);padding:1px 6px;border-radius:3px;
 .rp-vol::-moz-range-progress{height:13px;background:var(--green);box-shadow:0 0 8px var(--green-glow)}
 
 .t-src-row{gap:6px;flex-wrap:wrap}
-.rp-ch{background:transparent;border:none;color:var(--mute);font-family:inherit;font-size:12px;
-  padding:0;margin:0;cursor:pointer;transition:color .15s,text-shadow .15s;font-weight:600}
-.rp-ch::before{content:"["}.rp-ch::after{content:"]"}
-.rp-ch:hover{color:var(--green-hi);text-shadow:0 0 8px var(--green-glow)}
-.rp-ch.active{color:var(--amber);font-weight:800;text-shadow:0 0 8px var(--amber-glow)}
 .t-pill-static{color:var(--mute-2);font-weight:500;font-size:12px}
 
 .t-pl-header{color:var(--amber);font-weight:800;gap:6px;flex-wrap:wrap;text-shadow:0 0 6px var(--amber-glow)}
 .t-pl-header .t-dim{text-shadow:none;font-weight:400}
-.t-pl-item{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.t-pl-active{color:var(--fg-hi);font-weight:700}
-.t-pl-active::first-letter{color:var(--green)}
+.t-pl-item{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;color:var(--mute);
+  margin:0 -8px;padding:1px 8px;border-radius:4px;transition:background .15s,color .15s}
+.t-pl-item:hover{background:rgba(55,245,160,.06);color:var(--fg-hi)}
+.t-pl-item.active{color:var(--fg-hi);font-weight:700}
+.t-pl-mark{color:var(--green);visibility:hidden;display:inline-block;width:1ch;text-shadow:0 0 8px var(--green-glow)}
+.t-pl-item.active .t-pl-mark{visibility:visible}
+.t-pl-num{color:var(--mute-2)}
+.t-pl-item.active .t-pl-num{color:var(--green)}
 
 .t-help{gap:14px;flex-wrap:wrap;color:var(--mute);font-size:11px;margin-top:4px}
 .t-help-item{display:inline-flex;align-items:baseline;gap:5px}
@@ -578,17 +578,7 @@ footer{border-top:1px solid var(--line);background:var(--ink-2);padding:46px 0 5
             </div>
             <div class="t-row t-src-row">
               <span class="t-label">SRC</span>
-              <button class="rp-ch active" data-station="lofi" onclick="switchChannel('lofi')">Lofi</button>
-              <button class="rp-ch" data-station="edm" onclick="switchChannel('edm')">EDM</button>
-              <button class="rp-ch" data-station="synthwave" onclick="switchChannel('synthwave')">Synthwave</button>
-              <button class="rp-ch" data-station="ncs" onclick="switchChannel('ncs')">NCS</button>
-              <button class="rp-ch" data-station="ncs-house" onclick="switchChannel('ncs-house')">NCS House</button>
-              <button class="rp-ch" data-station="ncs-dubstep" onclick="switchChannel('ncs-dubstep')">NCS Dubstep</button>
-              <button class="rp-ch" data-station="ncs-dnb" onclick="switchChannel('ncs-dnb')">NCS DnB</button>
-              <button class="rp-ch" data-station="ncs-trap" onclick="switchChannel('ncs-trap')">NCS Trap</button>
-              <button class="rp-ch" data-station="ncs-phonk" onclick="switchChannel('ncs-phonk')">NCS Phonk</button>
-              <button class="rp-ch" data-station="ncs-pop" onclick="switchChannel('ncs-pop')">NCS Pop</button>
-              <button class="rp-ch" data-station="ncs-chill" onclick="switchChannel('ncs-chill')">NCS Chill</button>
+              <span class="t-pill-static">[Radio]</span>
               <span class="t-pill-static">[Local]</span>
               <span class="t-pill-static">[Navidrome]</span>
               <span class="t-pill-static">[Plex]</span>
@@ -606,17 +596,17 @@ footer{border-top:1px solid var(--line);background:var(--ink-2);padding:46px 0 5
               <span class="t-dim">[1/11]</span>
               <span>──</span>
             </div>
-            <div class="t-pl-item t-pl-active">▶ 1. Lofi Hip Hop Radio</div>
-            <div class="t-pl-item t-dim">&nbsp;&nbsp;2. EDM Pulse</div>
-            <div class="t-pl-item t-dim">&nbsp;&nbsp;3. Synthwave Nights</div>
-            <div class="t-pl-item t-dim">&nbsp;&nbsp;4. NCS Radio</div>
-            <div class="t-pl-item t-dim">&nbsp;&nbsp;5. NCS House</div>
-            <div class="t-pl-item t-dim">&nbsp;&nbsp;6. NCS Dubstep</div>
-            <div class="t-pl-item t-dim">&nbsp;&nbsp;7. NCS Drum &amp; Bass</div>
-            <div class="t-pl-item t-dim">&nbsp;&nbsp;8. NCS Trap</div>
-            <div class="t-pl-item t-dim">&nbsp;&nbsp;9. NCS Phonk</div>
-            <div class="t-pl-item t-dim">&nbsp;10. NCS Pop</div>
-            <div class="t-pl-item t-dim">&nbsp;11. NCS Chill</div>
+            <div class="t-pl-item active" data-station="lofi" role="button" tabindex="0" onclick="switchChannel('lofi')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;1.</span> Lofi Hip Hop Radio</div>
+            <div class="t-pl-item" data-station="edm" role="button" tabindex="0" onclick="switchChannel('edm')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;2.</span> EDM Pulse</div>
+            <div class="t-pl-item" data-station="synthwave" role="button" tabindex="0" onclick="switchChannel('synthwave')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;3.</span> Synthwave Nights</div>
+            <div class="t-pl-item" data-station="ncs" role="button" tabindex="0" onclick="switchChannel('ncs')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;4.</span> NCS Radio</div>
+            <div class="t-pl-item" data-station="ncs-house" role="button" tabindex="0" onclick="switchChannel('ncs-house')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;5.</span> NCS House</div>
+            <div class="t-pl-item" data-station="ncs-dubstep" role="button" tabindex="0" onclick="switchChannel('ncs-dubstep')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;6.</span> NCS Dubstep</div>
+            <div class="t-pl-item" data-station="ncs-dnb" role="button" tabindex="0" onclick="switchChannel('ncs-dnb')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;7.</span> NCS Drum &amp; Bass</div>
+            <div class="t-pl-item" data-station="ncs-trap" role="button" tabindex="0" onclick="switchChannel('ncs-trap')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;8.</span> NCS Trap</div>
+            <div class="t-pl-item" data-station="ncs-phonk" role="button" tabindex="0" onclick="switchChannel('ncs-phonk')"><span class="t-pl-mark">▶</span><span class="t-pl-num">&nbsp;9.</span> NCS Phonk</div>
+            <div class="t-pl-item" data-station="ncs-pop" role="button" tabindex="0" onclick="switchChannel('ncs-pop')"><span class="t-pl-mark">▶</span><span class="t-pl-num">10.</span> NCS Pop</div>
+            <div class="t-pl-item" data-station="ncs-chill" role="button" tabindex="0" onclick="switchChannel('ncs-chill')"><span class="t-pl-mark">▶</span><span class="t-pl-num">11.</span> NCS Chill</div>
             <div class="t-spacer"></div>
             <div class="t-row t-help">
               <span class="t-help-item"><kbd>↑↓</kbd> Scroll</span>
@@ -953,7 +943,7 @@ var radioPls={edm:'https://radio.cliamp.stream/edm/stream.pls',lofi:'https://rad
 var radioNames={edm:'EDM Pulse',lofi:'Lofi Hip Hop Radio',synthwave:'Synthwave Nights','ncs':'NCS Radio','ncs-house':'NCS House','ncs-dubstep':'NCS Dubstep','ncs-dnb':'NCS Drum & Bass','ncs-trap':'NCS Trap','ncs-phonk':'NCS Phonk','ncs-pop':'NCS Pop','ncs-chill':'NCS Chill'};
 
 function updateChannelUI(ch){
-  document.querySelectorAll('.rp-ch').forEach(function(b){b.classList.toggle('active',b.dataset.station===ch)});
+  document.querySelectorAll('.t-pl-item[data-station]').forEach(function(it){it.classList.toggle('active',it.dataset.station===ch)});
   var hintEl=document.getElementById('radio-hint-cmd');
   hintEl.textContent='';
   var prompt=document.createElement('span');
@@ -1379,6 +1369,13 @@ window.addEventListener("resize",function(){
   _globeResizeTimer=setTimeout(function(){
     if(window._radioCountries)initGlobe(window._radioCountries);
   },300);
+});
+
+/* ── Playlist: keyboard activation (click plays via inline onclick) ── */
+document.querySelectorAll('.t-pl-item[data-station]').forEach(function(it){
+  it.addEventListener('keydown',function(e){
+    if(e.key===' '||e.key==='Enter'){e.preventDefault();switchChannel(it.dataset.station)}
+  });
 });
 
 /* ── Ticker: duplicate content for seamless loop ── */
