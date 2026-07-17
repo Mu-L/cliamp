@@ -469,6 +469,12 @@
     justify-content:center;flex-wrap:wrap;
     animation:fade-up .6s ease-out .2s both;
   }
+  .hero-sponsor{
+    margin-top:28px;text-align:center;
+    animation:fade-up .6s ease-out .3s both;
+  }
+  .hero-sponsor img{max-width:100%;height:auto;opacity:.85;transition:opacity .2s}
+  .hero-sponsor a:hover img{opacity:1}
   .btn{
     display:inline-flex;align-items:center;gap:10px;
     font-family:inherit;font-size:12px;letter-spacing:2px;
@@ -1395,6 +1401,10 @@
     <div class="hero-cta">
       <a href="#install" class="btn btn-primary">Install<span class="btn-arrow">→</span></a>
       <a href="https://github.com/bjarneo/cliamp" class="btn btn-ghost">Source<span class="btn-arrow">↗</span></a>
+    </div>
+
+    <div class="hero-sponsor">
+      <a href="https://contextowl.co"><img src="https://contextowl.co/uploads/_brand/sponsor-dark.svg" alt="Proudly sponsored by contextowl.co" width="400"></a>
     </div>
   </div>
 </section>
